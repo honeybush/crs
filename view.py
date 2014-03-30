@@ -1,6 +1,7 @@
 from Tkinter import*
 import classes_gui
 import control_center
+import tkMessageBox
 
 class Main:
 	def __init__(self, root):
@@ -8,7 +9,7 @@ class Main:
 		self.cc = control_center.CC()
 		self.root.geometry("200x90")
 		self.root.title("CRS")
-		#self.root.resizable(width=FALSE, height=FALSE)
+		self.root.resizable(width=FALSE, height=FALSE)
 		self.createFrame()
 		
 	def createFrame(self):
@@ -26,14 +27,21 @@ class Main:
 		
 	def refresh(self):
 		self.getInput()
-		self.loginFrame.destroy()
 		self.createFrame()
 	
 	def getInput(self):
-		self.input = {}
-		self.input["Username"] = self.username.get()
-		self.input["Password"] = self.password.get()
-		#self.cc.login = self.input
+		try:
+			self.input = {}
+			self.input["Username"] = self.username.get()
+			self.input["Password"] = self.password.get()
+			login = self.cc.login(self.input)
+			if login == True:
+				tkMessageBox.showinfo("CRS", "Log-in successful!")
+				self.loginFrame.destroy()
+			else:
+				raise Exception("Wrong userpass")
+		except:
+			tkMessageBox.showerror("CRS", "Wrong username/password")
 	
 	def create(self):
 		user = Toplevel(self.root)

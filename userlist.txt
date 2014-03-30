@@ -1,0 +1,18 @@
+acmiranda1:password
+	Miranda, Aliya C
+	student
+rdmarphil1:matabakaraw
+	Marphil, Ramon D
+	teacher
+ldpatawad1:mekasalanan
+	Patawad, Loar D
+	admin
+azescobar1:jellybelly
+	Escobar, Angelika Z
+	student
+scmiranda1:mabantotAKO
+	Miranda, Sonia C
+	teacher
+lcpoe1:teletubbsss
+	Poe, Lala C
+	admin

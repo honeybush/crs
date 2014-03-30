@@ -8,6 +8,13 @@ class User:
 		self.password = ""
 		self.setDetails()
 		self.username = self.convertName()
+	def reset(self):
+		self.fn = ""
+		self.mi = ""
+		self.ln = ""
+		self.type = ""
+		self.password = ""
+		self.username = ""
 	def setDetails(self):
 		self.fn = self.userInfo.get("first name")
 		self.mi = self.userInfo.get("middle initial")
@@ -27,15 +34,20 @@ class User:
 			return username+str(n+1)
 	def searchUsername(self, username):
 		userlist = self.getUsers()
+		print userlist
 		for users in userlist:
-			if users[len(username)-1] == username:
+			print users
+			if users[:len(users)-1] == username:
 				return True
 		return False
 	def usernameCount(self, username):
 		userlist = self.getUsers()
 		n = 0
 		for users in userlist:
-			if users[len(username)-1] == username:
+			if users[:len(users)-1] == username:
+				print users[:len(users)-1]
+				print username
+				print users[:len(users)-1] == username
 				n+=1
 		return n
 	def getUsers(self):
