@@ -7,7 +7,11 @@ class User:
 		self.type = ""
 		self.password = ""
 		self.setDetails()
+		self.fullname = self.getFullName()
 		self.username = self.convertName()
+	def getFullName(self):
+		name = self.ln+", "+self.fn+" "+self.mi+"."
+		return name
 	def reset(self):
 		self.fn = ""
 		self.mi = ""
@@ -34,9 +38,9 @@ class User:
 			return username+str(n+1)
 	def searchUsername(self, username):
 		userlist = self.getUsers()
-		print userlist
+		#print userlist
 		for users in userlist:
-			print users
+			#print users
 			if users[:len(users)-1] == username:
 				return True
 		return False
@@ -45,13 +49,13 @@ class User:
 		n = 0
 		for users in userlist:
 			if users[:len(users)-1] == username:
-				print users[:len(users)-1]
-				print username
-				print users[:len(users)-1] == username
+				#print users[:len(users)-1]
+				#print username
+				#print users[:len(users)-1] == username
 				n+=1
 		return n
 	def getUsers(self):
-		f = open("userlist.txt")
+		f = open("userlist.txt", "r")
 		users = []
 		for line in f:
 			if not(line[0] == "\t"):
@@ -69,6 +73,7 @@ class Teacher(User):
 		self.type = "teacher"
 		self.courses = []
 		self.setDetails()
+		self.fullname = self.getFullName()
 		self.username = self.convertName()
 	def getCourses(self, courses):
 		self.courses = courses
@@ -82,8 +87,9 @@ class Student(User):
 		self.mi = ""
 		self.ln = ""
 		self.type = "student"
-		self.courses = []
+		self.courses = {}
 		self.setDetails()
+		self.fullname = self.getFullName()
 		self.username = self.convertName()
 	def getCourses(self, courses):
 		self.courses = courses
@@ -99,4 +105,5 @@ class Admin(User):
 		self.type = "admin"
 		self.courses = []
 		self.setDetails()
+		self.fullname = self.getFullName()
 		self.username = self.convertName()

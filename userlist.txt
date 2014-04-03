@@ -16,3 +16,6 @@ scmiranda1:mabantotAKO
 lcpoe1:teletubbsss
 	Poe, Lala C
 	admin
+dpcanlas1:bebe123
+	Canlas, Dai P
+	student

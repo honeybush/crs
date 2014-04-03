@@ -2,6 +2,7 @@ from Tkinter import*
 import classes_gui
 import control_center
 import tkMessageBox
+import sys, traceback
 
 class Main:
 	def __init__(self, root):
@@ -32,20 +33,34 @@ class Main:
 	def getInput(self):
 		try:
 			self.input = {}
-			self.input["Username"] = self.username.get()
-			self.input["Password"] = self.password.get()
+			self.input["username"] = self.username.get()
+			self.input["password"] = self.password.get()
 			login = self.cc.login(self.input)
 			if login == True:
-				tkMessageBox.showinfo("CRS", "Log-in successful!")
+				#tkMessageBox.showinfo("CRS", "Log-in successful!")
+				type = self.cc.getTypeLog(self.input)
+				self.openCRS(type)
 				self.loginFrame.destroy()
 			else:
 				raise Exception("Wrong userpass")
 		except:
 			tkMessageBox.showerror("CRS", "Wrong username/password")
+			self.loginFrame.destroy()
+			traceback.print_exc(file=sys.stdout)
 	
 	def create(self):
 		user = Toplevel(self.root)
 		createAccount = classes_gui.CreateAccount(user, self.cc)
+	
+	def openCRS(self, type):
+		user = Toplevel(self.root)
+		#print type
+		if type == "student" or type == 1:
+			crs = classes_gui.StudentPage(user, self.cc)
+		elif type == "teacher" or type == 2:
+			crs = classes_gui.TeacherPage(user, self.cc)
+		else:
+			crs = classes_gui.AdminPage(user, self.cc)
 
 root = Tk()
 Main(root)

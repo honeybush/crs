@@ -1,0 +1,16 @@
+e1mws monday,wednesday,saturday 7-8:30
+	C:English 101
+	P:Miranda, Sonia C.
+m5wfA wednesday,friday 7:00-8:30
+	C:Math 53
+	P:Marphil, Ramon D
+f4ttC tuesday,thursday 10:00-11:30
+	C:Filipino 40
+	P:Miranda, Sonia C
+	acmiranda1
+p2tftsD tuesday,friday,thursday,saturday 11:30-1:00
+	C:Physics 27
+	P:Marphil, Ramon D.
+cs1mwfE monday,wednesday,friday 1:00-2:30
+	C:Computer Science 12
+	P:Marhil, Ramon D
